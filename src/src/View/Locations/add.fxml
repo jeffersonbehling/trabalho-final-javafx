@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Locations.AddController">
+   <children>
+      <Label layoutX="76.0" layoutY="96.0" text="Tipo de Cliente" />
+      <ComboBox fx:id="comboClientTypes" layoutX="76.0" layoutY="130.0" prefHeight="25.0" prefWidth="193.0" />
+      <Label fx:id="lblCpfCnpj" layoutX="77.0" layoutY="166.0" text="CPF" />
+      <TextField fx:id="txtCpf" layoutX="76.0" layoutY="190.0" onKeyTyped="#searchClientByCpf" prefHeight="29.0" prefWidth="224.0" />
+      <Label layoutX="466.0" layoutY="166.0" text="Número de Série" />
+      <TextField fx:id="txtSerialNumber" layoutX="466.0" layoutY="190.0" prefHeight="29.0" prefWidth="193.0" />
+      <Button fx:id="btnSave" disable="true" layoutX="639.0" layoutY="368.0" mnemonicParsing="false" onAction="#saveLocation" prefHeight="25.0" prefWidth="80.0" text="Salvar" />
+      <TextField fx:id="txtCnpj" layoutX="76.0" layoutY="204.0" onKeyTyped="#searchClientByCnpj" prefHeight="29.0" prefWidth="224.0" visible="false" />
+      <Label fx:id="lblClient" layoutX="77.0" layoutY="227.0" text="Nome do Cliente" visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblName" layoutX="77.0" layoutY="246.0" prefHeight="19.0" prefWidth="230.0" text="Label" visible="false" />
+      <Label fx:id="lblProjector" layoutX="472.0" layoutY="231.0" text="Marca e Modelo do Projetor" visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblBrandModel" layoutX="472.0" layoutY="250.0" text="Label" visible="false" />
+      <Label fx:id="lblError" layoutX="269.0" layoutY="349.0" textFill="RED" visible="false" />
+      <Button layoutX="668.0" layoutY="190.0" mnemonicParsing="false" onAction="#searchProjectorBySerialNumber" text="Procurar" />
+      <Label fx:id="lblLocationDate" layoutX="77.0" layoutY="279.0" text="Data de Locação" visible="false" />
+      <DatePicker fx:id="txtLocationDate" layoutX="78.0" layoutY="298.0" prefHeight="29.0" prefWidth="146.0" visible="false" />
+      <DatePicker fx:id="txtDevolutionDate" layoutX="308.0" layoutY="298.0" prefHeight="29.0" prefWidth="146.0" visible="false" />
+      <Label fx:id="lblDevolutionDate" layoutX="307.0" layoutY="279.0" text="Data de Devolução" visible="false" />
+      <Label fx:id="lblPrice" layoutX="522.0" layoutY="274.0" text="Preço" visible="false" />
+      <TextField fx:id="txtPrice" layoutX="522.0" layoutY="293.0" prefHeight="29.0" prefWidth="137.0" visible="false" />
+      <MenuBar prefHeight="25.0" prefWidth="800.0">
+         <menus>
+            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddProjector" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddLocation" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Visualizar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goViewClient" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+         </menus>
+      </MenuBar>
+   </children>
+</Pane>

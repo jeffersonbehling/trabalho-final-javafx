@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Clients.ViewController">
+   <children>
+      <Label layoutX="173.0" layoutY="57.0" text="Informações do Cliente">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="119.0" text="Nome">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblName" layoutX="93.0" layoutY="140.0" prefHeight="19.0" prefWidth="200.0" text="LabelNome" />
+      <Label layoutX="92.0" layoutY="165.0" text="CPF/CNPJ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCpfCnpj" layoutX="93.0" layoutY="186.0" prefHeight="19.0" prefWidth="200.0" text="LabelCpfCnpj" />
+      <Label fx:id="labelRg" layoutX="94.0" layoutY="264.0" text="RG">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRg" layoutX="94.0" layoutY="285.0" prefHeight="19.0" prefWidth="200.0" text="LabelRg" />
+      <Label layoutX="331.0" layoutY="119.0" text="Estado">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblState" layoutX="331.0" layoutY="137.0" prefHeight="19.0" prefWidth="200.0" text="LabelEstado" />
+      <Label layoutX="331.0" layoutY="165.0" text="Cidade">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCity" layoutX="331.0" layoutY="186.0" prefHeight="19.0" prefWidth="200.0" text="LabelCidade" />
+      <Label layoutX="93.0" layoutY="213.0" text="E-mail">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmail" layoutX="94.0" layoutY="234.0" prefHeight="19.0" prefWidth="200.0" text="LabelEmail" />
+      <Button layoutX="251.0" layoutY="381.0" mnemonicParsing="false" onAction="#goBack" text="Voltar" />
+      <Label layoutX="331.0" layoutY="214.0" text="Telefone">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTelephone" layoutX="331.0" layoutY="234.0" prefHeight="17.0" prefWidth="168.0" text="LabelTelefone" />
+      <Label fx:id="lblDataNasc" layoutX="331.0" layoutY="263.0" text="Data de Nascimento">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBirthday" layoutX="331.0" layoutY="284.0" prefHeight="17.0" prefWidth="168.0" text="LabelDataNascimento" />
+      <MenuBar prefHeight="29.0" prefWidth="550.0">
+         <menus>
+            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddProjector" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddLocation" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Visualizar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goViewClient" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+         </menus>
+      </MenuBar>
+   </children>
+</Pane>

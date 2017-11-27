@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Projectors.AddController">
+   <children>
+      <Label layoutX="76.0" layoutY="93.0" text="Marca" />
+      <TextField fx:id="txtBrandField" layoutX="76.0" layoutY="112.0" prefHeight="29.0" prefWidth="257.0" />
+      <Label layoutX="76.0" layoutY="151.0" text="Modelo" />
+      <TextField fx:id="txtModelField" layoutX="76.0" layoutY="170.0" prefHeight="29.0" prefWidth="257.0" />
+      <Label layoutX="76.0" layoutY="210.0" text="Nº de Série" />
+      <TextField fx:id="txtSerialNumberField" layoutX="76.0" layoutY="229.0" prefHeight="29.0" prefWidth="257.0" />
+      <Label layoutX="435.0" layoutY="93.0" text="Data de Compra" />
+      <DatePicker fx:id="txtPurchaseDateField" layoutX="435.0" layoutY="112.0" prefHeight="29.0" prefWidth="200.0" />
+      <Label layoutX="435.0" layoutY="210.0" text="Ansi Lumens" />
+      <TextField fx:id="txtAnsiLumensField" layoutX="435.0" layoutY="229.0" prefHeight="29.0" prefWidth="257.0" />
+      <Label layoutX="435.0" layoutY="151.0" text="Data da última troca de lâmpada" />
+      <DatePicker fx:id="txtLastDateField" layoutX="435.0" layoutY="170.0" prefHeight="29.0" prefWidth="200.0" />
+      <Label layoutX="79.0" layoutY="270.0" text="Estado do Projetor" />
+      <ComboBox fx:id="comboProjectorState" layoutX="79.0" layoutY="289.0" prefHeight="29.0" prefWidth="192.0" />
+      <Button fx:id="btnSave" layoutX="233.0" layoutY="402.0" mnemonicParsing="false" onAction="#recordProjector" prefHeight="29.0" prefWidth="100.0" text="Salvar" />
+      <Button fx:id="btnCancel" layoutX="424.0" layoutY="402.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="100.0" text="Cancelar" />
+      <Label fx:id="lblError" layoutX="233.0" layoutY="362.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <MenuBar prefHeight="25.0" prefWidth="800.0">
+         <menus>
+            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddProjector" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddLocation" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Visualizar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goViewClient" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+         </menus>
+      </MenuBar>
+   </children>
+</Pane>

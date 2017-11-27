@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Clients.SearchController">
+   <children>
+      <Label layoutX="35.0" layoutY="74.0" text="Procurar Cliente">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearch" layoutX="35.0" layoutY="104.0" onKeyTyped="#searchClient" prefHeight="25.0" prefWidth="256.0" promptText="Filtre pelo nome do cliente" />
+      <TableView fx:id="table" layoutX="35.0" layoutY="158.0" prefHeight="200.0" prefWidth="730.0">
+        <columns>
+          <TableColumn fx:id="columnName" prefWidth="329.0" text="Nome" />
+            <TableColumn fx:id="columnEmail" prefWidth="205.0" text="E-mail" />
+            <TableColumn fx:id="columnTelephone" prefWidth="195.0" text="Telefone" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnEdit" disable="true" layoutX="363.0" layoutY="395.0" mnemonicParsing="false" onAction="#goEditClient" prefHeight="25.0" prefWidth="75.0" text="Editar" />
+      <Button fx:id="btnDelete" disable="true" layoutX="471.0" layoutY="395.0" mnemonicParsing="false" onAction="#goDeleteClient" prefHeight="25.0" prefWidth="75.0" text="Excluir" />
+      <Button fx:id="btnView" disable="true" layoutX="259.0" layoutY="395.0" mnemonicParsing="false" onAction="#goViewClient" text="Visualizar" />
+      <MenuBar prefHeight="25.0" prefWidth="800.0">
+         <menus>
+            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddProjector" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddLocation" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Visualizar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goViewClient" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+         </menus>
+      </MenuBar>
+   </children>
+</Pane>

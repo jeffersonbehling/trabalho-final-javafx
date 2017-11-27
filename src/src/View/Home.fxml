@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.HomeController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="800.0">
+         <menus>
+            <Menu mnemonicParsing="false" onShowing="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Cadastrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddProjector" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goAddLocation" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Visualizar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goViewClient" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Relatorios">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#reportClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportLocations" text="Locaçoes" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+         </menus>
+      </MenuBar>
+      <TableView fx:id="table" layoutX="47.0" layoutY="118.0" prefHeight="332.0" prefWidth="699.0">
+        <columns>
+          <TableColumn fx:id="columnClient" prefWidth="170.0" text="Cliente" />
+          <TableColumn fx:id="columnProjector" prefWidth="170.0" text="Projetor" />
+            <TableColumn fx:id="columnLocationDate" prefWidth="115.0" text="Locação" />
+            <TableColumn fx:id="columnDevolutionDate" prefWidth="115.0" text="Devolução" />
+            <TableColumn fx:id="columnPrice" prefWidth="128.0" text="Preço" />
+        </columns>
+      </TableView>
+      <Label layoutX="47.0" layoutY="76.0" text="Locações pendentes">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

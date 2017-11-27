@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.LoginController">
+   <children>
+      <Text layoutX="326.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="326.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtUsername" layoutX="326.0" layoutY="185.0" />
+      <PasswordField fx:id="txtPassword" layoutX="326.0" layoutY="250.0" />
+      <Button layoutX="372.0" layoutY="322.0" mnemonicParsing="false" onAction="#verifyLogin" text="Entrar">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Button>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0">
+        <menus>
+          <Menu mnemonicParsing="false" onAction="#showHelp" text="Ajuda" />
+          <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+        </menus>
+      </MenuBar>
+   </children>
+</Pane>
