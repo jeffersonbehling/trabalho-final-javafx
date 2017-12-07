@@ -144,7 +144,7 @@ public class HomeController {
     
     @FXML
     void reportClients() {
-        
+        Main.loadScene("View/Reports/clients.fxml", "Relatório de Clientes");
     }
     
     @FXML
