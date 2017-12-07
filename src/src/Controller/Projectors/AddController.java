@@ -26,7 +26,7 @@ import src.Main;
  *
  * @author jefferson
  */
-public class AddController {
+public class AddController extends AppController {
     @FXML
     private Button btnCancel;
 

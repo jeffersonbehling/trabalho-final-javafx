@@ -35,9 +35,14 @@
       <Button fx:id="btnEdit" disable="true" layoutX="355.0" layoutY="427.0" mnemonicParsing="false" onAction="#goEdit" prefHeight="29.0" prefWidth="83.0" text="Editar" />
       <Button fx:id="btnDelete" disable="true" layoutX="454.0" layoutY="427.0" mnemonicParsing="false" onAction="#goDelete" prefHeight="29.0" prefWidth="83.0" text="Excluir" />
       <Button fx:id="btnView" disable="true" layoutX="253.0" layoutY="427.0" mnemonicParsing="false" onAction="#goView" prefHeight="29.0" prefWidth="83.0" text="Visualizar" />
-      <MenuBar layoutX="-1.0" prefHeight="25.0" prefWidth="800.0">
+      <MenuBar prefHeight="25.0" prefWidth="800.0">
          <menus>
-            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goHome" text="Home" />
+                  <MenuItem mnemonicParsing="false" onAction="#goExit" text="Sair" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Cadastrar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
@@ -52,7 +57,13 @@
                   <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+            <Menu mnemonicParsing="false" text="Relatorios">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reportClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportLocations" text="Locaçoes" />
+               </items>
+            </Menu>
          </menus>
       </MenuBar>
    </children>

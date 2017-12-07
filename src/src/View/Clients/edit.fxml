@@ -38,7 +38,12 @@
       <Label fx:id="lblError" layoutX="68.0" layoutY="368.0" text="lblError" textFill="RED" visible="false" />
       <MenuBar prefHeight="25.0" prefWidth="800.0">
          <menus>
-            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goHome" text="Home" />
+                  <MenuItem mnemonicParsing="false" onAction="#goExit" text="Sair" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Cadastrar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
@@ -53,7 +58,13 @@
                   <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+            <Menu mnemonicParsing="false" text="Relatorios">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reportClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportLocations" text="Locaçoes" />
+               </items>
+            </Menu>
          </menus>
       </MenuBar>
    </children>

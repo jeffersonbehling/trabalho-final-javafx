@@ -24,7 +24,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		Main.primaryStage = primaryStage;
-		loadScene("View/Reports/projectors.fxml", "Login");
+		loadScene("View/Login.fxml", "Login");
 	}
 
 	public static void main(String[] args) {

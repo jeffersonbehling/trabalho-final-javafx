@@ -13,7 +13,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Menu;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,6 +52,9 @@ public class HomeController {
     private Database database = new Database();
     
     private Connection connection;
+    
+    @FXML
+    private Menu menuHome;
 
     @FXML
     void initialize() {

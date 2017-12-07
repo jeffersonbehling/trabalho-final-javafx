@@ -5,36 +5,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Locations.SearchController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Reports.ClientsController">
    <children>
-      <Label layoutX="45.0" layoutY="84.0" text="Procurar Cliente">
+      <Label layoutX="63.0" layoutY="72.0" text="Relatório de Clientes">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSearchClient" layoutX="45.0" layoutY="114.0" onKeyTyped="#searchClient" prefHeight="25.0" prefWidth="256.0" promptText="Filtre pelo nome do cliente" />
-      <TableView fx:id="table" layoutX="35.0" layoutY="171.0" prefHeight="200.0" prefWidth="730.0">
-         <columns>
-            <TableColumn fx:id="columnClient" prefWidth="168.0" text="Cliente" />
-            <TableColumn fx:id="columnProjector" prefWidth="131.0" text="Projetor" />
-            <TableColumn fx:id="columnLocationDate" prefWidth="127.0" text="Data Locação" />
-            <TableColumn fx:id="columnDevolutionDate" minWidth="0.0" prefWidth="110.0" text="Data Devolução" />
-            <TableColumn fx:id="columnPrice" prefWidth="96.0" text="Preço" />
-            <TableColumn fx:id="columnReturned" prefWidth="97.0" text="Devolvido" />
-         </columns>
+      <TableView fx:id="tableView" layoutX="61.0" layoutY="102.0" prefHeight="245.0" prefWidth="672.0">
+        <columns>
+          <TableColumn fx:id="columnId" maxWidth="500.0" minWidth="63.0" prefWidth="63.0" text="ID" />
+          <TableColumn fx:id="columnName" maxWidth="500.0" minWidth="125.0" prefWidth="241.0" text="Nome" />
+            <TableColumn fx:id="columnEmail" maxWidth="500.0" minWidth="125.0" prefWidth="222.0" text="E-mail" />
+            <TableColumn fx:id="columnTelephone" maxWidth="500.0" minWidth="125.0" prefWidth="144.0" text="Telefone" />
+        </columns>
       </TableView>
-      <Button fx:id="btnReturn" disable="true" layoutX="439.0" layoutY="405.0" mnemonicParsing="false" onAction="#goReturn" prefHeight="25.0" prefWidth="75.0" text="Devolver" />
-      <Button fx:id="btnRenew" disable="true" layoutX="312.0" layoutY="405.0" mnemonicParsing="false" onAction="#goRenew" text="Renovar" />
+      <Button layoutX="356.0" layoutY="393.0" mnemonicParsing="false" onAction="#generatePdf" prefHeight="29.0" prefWidth="83.0" text="Gerar PDF" />
+      <ProgressIndicator fx:id="loading" layoutX="628.0" layoutY="381.0" visible="false" />
       <MenuBar prefHeight="25.0" prefWidth="800.0">
          <menus>
             <Menu mnemonicParsing="false" text="Sistema">

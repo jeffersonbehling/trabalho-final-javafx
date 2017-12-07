@@ -17,12 +17,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Reports.ProjectorsController">
    <children>
-      <Label layoutX="351.0" layoutY="62.0" text="Projetores">
+      <Label layoutX="63.0" layoutY="72.0" text="Relatório de Projetores">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="61.0" layoutY="100.0" prefHeight="289.0" prefWidth="672.0">
+      <TableView fx:id="tableView" layoutX="61.0" layoutY="102.0" prefHeight="245.0" prefWidth="672.0">
         <columns>
           <TableColumn fx:id="columnBrand" maxWidth="500.0" minWidth="125.0" prefWidth="125.0" text="Marca" />
           <TableColumn fx:id="columnModel" maxWidth="500.0" minWidth="125.0" prefWidth="125.0" text="Modelo" />
@@ -31,11 +31,16 @@
             <TableColumn fx:id="columnStatus" maxWidth="500.0" minWidth="101.0" prefWidth="140.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="407.0" layoutY="427.0" mnemonicParsing="false" onAction="#printerReport" prefHeight="29.0" prefWidth="83.0" text="Imprimir" />
-      <Button layoutX="310.0" layoutY="427.0" mnemonicParsing="false" onAction="#generatePdf" prefHeight="29.0" prefWidth="83.0" text="Gerar PDF" />
-      <MenuBar layoutX="-1.0" prefHeight="25.0" prefWidth="800.0">
+      <Button layoutX="359.0" layoutY="381.0" mnemonicParsing="false" onAction="#generatePdf" prefHeight="29.0" prefWidth="83.0" text="Gerar PDF" />
+      <ProgressIndicator fx:id="loading" layoutX="628.0" layoutY="381.0" visible="false" />
+      <MenuBar layoutX="-3.0" prefHeight="25.0" prefWidth="800.0">
          <menus>
-            <Menu mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goHome" text="Home" />
+                  <MenuItem mnemonicParsing="false" onAction="#goExit" text="Sair" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Cadastrar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
@@ -50,9 +55,14 @@
                   <MenuItem mnemonicParsing="false" onAction="#goViewLocations" text="Locaçoes" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
+            <Menu mnemonicParsing="false" text="Relatorios">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reportClients" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportProjectors" text="Projetores" />
+                  <MenuItem mnemonicParsing="false" onAction="#reportLocations" text="Locaçoes" />
+               </items>
+            </Menu>
          </menus>
       </MenuBar>
-      <ProgressIndicator fx:id="loading" layoutX="634.0" layoutY="418.0" prefHeight="53.0" prefWidth="51.0" />
    </children>
 </Pane>

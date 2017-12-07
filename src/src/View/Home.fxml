@@ -11,7 +11,11 @@
    <children>
       <MenuBar prefHeight="25.0" prefWidth="800.0">
          <menus>
-            <Menu mnemonicParsing="false" onShowing="#goHome" text="Home" />
+            <Menu mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goHome" text="Home" />
+                  <MenuItem mnemonicParsing="false" onAction="#goExit" text="Sair" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Cadastrar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goAddClients" text="Clientes" />
@@ -33,7 +37,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#reportLocations" text="Locaçoes" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#goExit" text="Sair" />
          </menus>
       </MenuBar>
       <TableView fx:id="table" layoutX="47.0" layoutY="118.0" prefHeight="332.0" prefWidth="699.0">

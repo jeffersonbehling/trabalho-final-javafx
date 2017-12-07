@@ -7,11 +7,9 @@ package src.Controller.Reports;
 
 import com.mysql.jdbc.Connection;
 import java.io.File;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,12 +20,10 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import src.Controller.Helpers.GenerateReports;
 import src.Main;
 import src.Model.Database;
-import src.Model.Projector;
+import src.Model.Client;
 
 /**
  * FXML Controller class
@@ -36,40 +32,37 @@ import src.Model.Projector;
  */
 
 
-public class ProjectorsController extends AppController {
+public class ClientsController extends AppController {
 
     @FXML
-    private TableColumn<Projector, String> columnPurchaseDate;
+    private TableColumn<Client, String> columnId;
 
     @FXML
-    private TableColumn<Projector, String> columnBrand;
+    private TableColumn<Client, String> columnName;
 
     @FXML
-    private TableColumn<Projector, String> columnStatus;
+    private TableColumn<Client, String> columnEmail;
 
     @FXML
-    private TableView<Projector> tableView;
+    private TableView<Client> tableView;
 
     @FXML
-    private TableColumn<Projector, String> columnSerialNumber;
+    private TableColumn<Client, String> columnTelephone;
 
-    @FXML
-    private TableColumn<Projector, String> columnModel;
-    
     @FXML
     private ProgressIndicator loading;
     
-    private ObservableList<Projector> tableDatas;
+    private ObservableList<Client> tableDatas;
     
     private String dir;
     private String reportName;
 	
-    private GeradorRelatorio<Projector> report = new GeradorRelatorio<Projector>("Projectors");
+    private GeradorRelatorio<Client> report = new GeradorRelatorio<Client>("Clients");
 
     private Database database = new Database();
     private Connection connection;
     
-    public ProjectorsController() {
+    public ClientsController() {
         if (!database.connect()) {
             System.err.println("Failed connected to database!");
             System.exit(0);
@@ -98,7 +91,7 @@ public class ProjectorsController extends AppController {
 			@Override
 			protected void succeeded() {				
 				loading.setVisible(false);
-				tableView.setItems((ObservableList<Projector>) tableDatas);
+				tableView.setItems((ObservableList<Client>) tableDatas);
 			}
 			
 			@Override
@@ -123,7 +116,7 @@ public class ProjectorsController extends AppController {
         Task<Void> printerReport = new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
-                    LinkedList<Projector> datas = new LinkedList<Projector>();
+                    LinkedList<Client> datas = new LinkedList<Client>();
                     datas.addAll(tableDatas);				
                     report.gerarRelatorio(datas);
                     report.imprimir();
@@ -180,17 +173,12 @@ public class ProjectorsController extends AppController {
 		Task<Void> gerandoRelatorio = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-                            LinkedList<Projector> dados = new LinkedList<Projector>();
+                            LinkedList<Client> dados = new LinkedList<Client>();
                             dados.addAll(tableDatas);
-
                             report.setDiretorioDoRelatorio(dir);
                             report.setNomeRelatorio(reportName);
                             report.gerarRelatorio(dados);
-                        try {
                             report.exportarParaPdf();
-                            } catch(Exception e) {
-                                System.out.println("Erro: " + e);
-                            }
                             return null;
 			}
 
@@ -221,52 +209,11 @@ public class ProjectorsController extends AppController {
 			
     }
     
-    @FXML
-	public void printer() {
-		        
-		loading.setVisible(true);
-		
-		Task<Void> imprimindoRelatorio = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				LinkedList<Projector> dados = new LinkedList<Projector>();
-				dados.addAll(tableDatas);				
-				report.gerarRelatorio(dados);
-				report.imprimir();
-				return null;
-			}
-
-			@Override
-			protected void succeeded() {				
-				loading.setVisible(false);
-				Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
-		        dialogoInfo.setTitle("Informação do Sistema");
-		        dialogoInfo.setHeaderText("Impressão de Relatório");
-		        dialogoInfo.setContentText("O relatório foi impresso com sucesso!");
-		        dialogoInfo.showAndWait();
-			}
-			
-			@Override
-			protected void failed(){
-				Alert dialogoInfo = new Alert(Alert.AlertType.ERROR);
-		        dialogoInfo.setTitle("Informação do Sistema");
-		        dialogoInfo.setHeaderText("Impressão de Relatório");
-		        dialogoInfo.setContentText("Erro ao imprimir o relatório!");
-		        dialogoInfo.showAndWait();
-			}
-		};
-		
-		Thread t = new Thread(imprimindoRelatorio);
-		t.setDaemon(true);
-		t.start();
-										
-	}
-    
-    public void gerarRelatorio(LinkedList<Projector> dados){
+    public void gerarRelatorio(LinkedList<Client> dados){
 		try {
-			this.report.gerarPDF(dados);
+                    this.report.gerarPDF(dados);
 		} catch (Exception e) {
-			System.out.println("Erro ao gerar relatório: " + e.getMessage());
+                    System.out.println("Erro ao gerar relatório: " + e.getMessage());
 		}
 	}
     
@@ -277,43 +224,37 @@ public class ProjectorsController extends AppController {
     }
     
     private void drawTable() {
-        columnBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        columnModel.setCellValueFactory(new PropertyValueFactory<>("model"));
-        columnPurchaseDate.setCellValueFactory(new PropertyValueFactory<>("purchaseDate"));
-        columnSerialNumber.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
-        columnStatus.setCellValueFactory(new PropertyValueFactory<>("projectorState"));
+        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        columnTelephone.setCellValueFactory(new PropertyValueFactory<>("telephone"));
     }
     
     private void getDatas() {
-        tableView.getItems().setAll((ObservableList<Projector>) tableDatas);
+        tableView.getItems().setAll((ObservableList<Client>) tableDatas);
     }
     
     private void search() {
         try {
-            String SQL = "SELECT * FROM projectors;";
+            String SQL = "SELECT * FROM clients;";
             PreparedStatement pstmt = (PreparedStatement) connection.prepareStatement(SQL);
             ResultSet rs = pstmt.executeQuery();
             
             try {
                 
                 while(rs.next()) {
-                    Projector projector = new Projector();
-                    projector.setId(rs.getInt("id"));
-                    projector.setBrand(rs.getString("brand"));
-                    projector.setModel(rs.getString("model"));
-                    projector.setPurchaseDate(rs.getString("purchase_date"));
-                    projector.setDateLastLampChange(rs.getString("date_last_lamp_change"));
-                    projector.setAnsiLumens(rs.getInt("ansi_lumens"));
-                    projector.setSerialNumber(rs.getString("serial_number"));
-                    projector.setProjectorState(rs.getString("projector_state"));
+                    Client client = new Client();
+                    client.setId(rs.getInt("id"));
+                    client.setName(rs.getString("name"));
+                    client.setEmail(rs.getString("email"));
+                    client.setTelephone(rs.getString("telephone"));
                     
-                    tableDatas.add(projector);
+                    tableDatas.add(client);
                 }
             } catch (SQLException ex) {
                     System.out.println("Error: " + ex.getMessage());
             }
             pstmt.close();
-
             
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());

@@ -1,5 +1,6 @@
-package application;
+package src.Controller.Reports;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -20,7 +21,8 @@ public class GeradorRelatorio<ClasseDados> {
 	private JasperPrint print;
 	
 	public GeradorRelatorio(String relatorio) {
-            this.diretorioDoJRXML = this.getClass().getClassLoader().getResource("").getPath();
+            
+            this.diretorioDoJRXML = "src/src/View/Reports";
             this.diretorioDoRelatorio = this.diretorioDoJRXML;
             this.relatorio = relatorio;		
 	}
@@ -42,15 +44,28 @@ public class GeradorRelatorio<ClasseDados> {
 	}
 		
 	public void gerarRelatorio(LinkedList<ClasseDados> dados) throws Exception{
-            this.report = JasperCompileManager.compileReport(this.diretorioDoJRXML + "application/" + this.relatorio + ".jrxml");
+            this.report = JasperCompileManager.compileReport(this.diretorioDoJRXML + "/" + this.relatorio + ".jrxml");
             this.print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(dados));
 	}
 	
 	public void exportarParaPdf() throws Exception{
-            JasperExportManager.exportReportToPdfFile(print, this.diretorioDoRelatorio + "/" + this.nomeRelatorio);		
+            System.out.println("Dir: " + diretorioDoRelatorio);
+            System.out.println("NOME REl: " + nomeRelatorio);
+            try {
+                JasperExportManager.exportReportToPdfFile(print, this.diretorioDoRelatorio + "/" + this.nomeRelatorio + ".pdf");		
+            } catch (Exception e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+            
 	}
 	
 	public void imprimir() throws Exception{		
             JasperPrintManager.printReport(print, true);		
+	}
+        
+        public void gerarPDF(LinkedList<ClasseDados> dados) throws Exception{
+		JasperReport report = JasperCompileManager.compileReport(this.diretorioDoJRXML + "/" + this.relatorio + ".jrxml");
+		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(dados));
+		JasperExportManager.exportReportToPdfFile(print, this.diretorioDoRelatorio + "/Relatorio_"+this.relatorio+".pdf");		
 	}
 }
